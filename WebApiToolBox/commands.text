@@ -1,0 +1,8 @@
+--build the nuget package
+
+ ..\.nuget\nuget pack -Build -Properties Configuration=Release
+
+
+ --publish the nuget package
+
+  ..\.nuget\nuget push WebApiTestClient.1.0.0.0.nupkg 

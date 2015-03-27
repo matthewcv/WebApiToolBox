@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>WebApiToolBox</id>
+    <version>1.0.0</version>
+    <title>Web API Test Client</title>
+    <authors>matthewcv</authors>
+    <owners>matthewcv</owners>
+    <projectUrl>https://github.com/matthewcv/WebApiToolBox</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Various tools to make working with Web API nicer.</description>
+    <releaseNotes>see changelog.text</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>WebAPI Test SDK Code Client Help Document</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.WebApi.WebHost" version="5.0" />
+    </dependencies>
+  </metadata>
+</package>
