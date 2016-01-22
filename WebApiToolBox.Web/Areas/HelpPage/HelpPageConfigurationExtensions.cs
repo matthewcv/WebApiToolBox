@@ -13,7 +13,6 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using WebApiToolBox.Web.Areas.HelpPage.ModelDescriptions;
 using WebApiToolBox.Web.Areas.HelpPage.Models;
-using WebApiToolBox.Web.Areas.HelpPage;
 
 namespace WebApiToolBox.Web.Areas.HelpPage
 {
@@ -224,7 +223,7 @@ namespace WebApiToolBox.Web.Areas.HelpPage
             if (!config.Properties.TryGetValue(modelId, out model))
             {
                 Collection<ApiDescription> apiDescriptions = config.Services.GetApiExplorer().ApiDescriptions;
-                ApiDescription apiDescription = apiDescriptions.FirstOrDefault(api => String.Equals(ApiDescriptionExtensions.GetFriendlyId(api), apiDescriptionId, StringComparison.OrdinalIgnoreCase));
+                ApiDescription apiDescription = apiDescriptions.FirstOrDefault(api => String.Equals(api.GetFriendlyId(), apiDescriptionId, StringComparison.OrdinalIgnoreCase));
                 if (apiDescription != null)
                 {
                     model = GenerateApiModel(apiDescription, config);

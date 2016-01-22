@@ -1,5 +1,5 @@
-* Keep a history of stuff that you enter (headers, resources, etc) and be able to re-use those items in other requests without having to re-type everything
-	saves headers for each API with version 1.0.4
-* explicitly set properties to null or blank or exclude them from the response
-	initial functionality with version 1.1.0
+* Generate documentation from XML Docs that would show up in the stand-alone client
+* Hold on to models that come and go so that they can be re-used in the API
+* be able to store and re-call sets of headers that can be re-used in different APIs
 * make the UI nicer
+* precompile the handlebars templates and minify/combine all the scripts

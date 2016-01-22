@@ -14,21 +14,30 @@ namespace WebApiToolBox
 {
     public static class ApiExplorerHelper
     {
-        private static Dictionary<string, Type> _typeCache = new Dictionary<string, Type>(); 
+        private static Dictionary<string, Type> _typeCache = new Dictionary<string, Type>();
+
+        internal static HttpConfiguration config = null;
 
         public static ApiNamesInfo GetAPIs()
         {
-            IApiExplorer apiExplorer = System.Web.Http.GlobalConfiguration.Configuration.Services.GetApiExplorer();
+            IApiExplorer apiExplorer = config.Services.GetApiExplorer();
 
-            List<ApiDescription> apiDescriptions = apiExplorer.ApiDescriptions.ToList();
+            var apis = apiExplorer.ApiDescriptions.GroupBy(d => d.ActionDescriptor.ControllerDescriptor.ControllerName);
 
-            return new ApiNamesInfo{ ApiNames= apiDescriptions.Select(d => d.GetFriendlyId()).ToList()};
+            ApiNamesInfo i = new ApiNamesInfo();
+
+            foreach (var api in apis)
+            {
+                i.ApiNames[api.Key] = api.Select(a => a.GetFriendlyId()).ToList();
+            }
+
+            return i;
 
         }
 
         public static ApiInfo GetApi(string name)
         {
-            IApiExplorer apiExplorer = System.Web.Http.GlobalConfiguration.Configuration.Services.GetApiExplorer();
+            IApiExplorer apiExplorer = config.Services.GetApiExplorer();
             ApiDescription desc = apiExplorer.ApiDescriptions.FirstOrDefault(a => a.GetFriendlyId() == name);
 
             return GetApiInfo(desc);

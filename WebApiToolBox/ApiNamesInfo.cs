@@ -8,6 +8,11 @@ namespace WebApiToolBox
 {
     public class ApiNamesInfo
     {
-        public List<String> ApiNames { get; set; } 
+        public ApiNamesInfo()
+        {
+            ApiNames = new Dictionary<string, List<string>>();
+        }
+        public Dictionary<string, List<string>> ApiNames { get; set; } 
     }
+
 }
